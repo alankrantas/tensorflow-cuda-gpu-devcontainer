@@ -15,9 +15,9 @@ See [here](https://www.tensorflow.org/install/pip#hardware_requirements) for har
 
 Modify [requirements.txt](https://github.com/alankrantas/windows-cuda-gpu-devcontainer/blob/main/.devcontainer/requirements.txt) to include packages you'd like to install. `ipykernel` is required for executing IPython notebook cells in VS Code.
 
-Open the folder in VS Code, press `F1` to bring up the Command Palette, and select **Dev Containers: Open Folder in Container...**. After that, simply start Docker then open the directory in VS Code.
+Open the folder in VS Code, press `F1` to bring up the Command Palette, and select **Dev Containers: Open Folder in Container...**.
 
-After the DevContainer is up and running, test the GPU support with
+When the DevContainer is up and running, test the GPU support with
 
 ```python
 python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
@@ -28,6 +28,8 @@ Test run the example file:
 ```python
 python3 autokeras-test.py
 ```
+
+After that, simply start Docker then open the directory in VS Code.
 
 ## Resources
 
