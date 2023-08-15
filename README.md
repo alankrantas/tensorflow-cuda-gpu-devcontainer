@@ -1,10 +1,10 @@
 # NVIDIA CUDA DevContainer Template with GPU Support on Windows
 
-Build and run a Ubuntu-based container with CUDA GPU support on Windows (and else) which supports executing `.py` and `.ipynb` scripts. This is to avoid Tensorflow's Windows compatibility issues, complex CUDA update chores as well as the need to install Anaconda.
+Build and run a DevContainer with Python 3, CUDA 11.8 and cuDNN on Windows to avoid compatibility/updating issues. `.py` and `.ipynb` scripts are supported without the need to install Anaconda.
 
 ## Prerequisites
 
-* An amd64 (x64) machine with a Nvidia graphic card
+* An amd64 (x64) machine with a CUDA-compatible NVIDIA graphic card
 * [Docker engine](https://docs.docker.com/engine/install/) or [Docker Desktop](https://docs.docker.com/desktop/install/windows-install/) (and setup [.wslconfig](https://learn.microsoft.com/en-us/windows/wsl/wsl-config) to use more cores and memory than default)
 * [NVIDIA graphic card driver](https://www.nvidia.com/download/index.aspx)
 * [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) (which is already included in Windows’ Docker Desktop)
