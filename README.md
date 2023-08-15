@@ -1,6 +1,6 @@
 # NVIDIA CUDA DevContainer Template with GPU Support on Windows
 
-Build and run a Ubuntu-based container with CUDA GPU support on Windows to avoid platform-related compatibility and update issues, which also supports running `.py` and `.ipynb` scripts.
+Build and run a Ubuntu-based container with CUDA GPU support on Windows. This is to avoid platform-related compatibility issues and complex updates, which also supports running `.py` and `.ipynb` scripts without the need to install Anaconda.
 
 ## Prerequisites
 
@@ -15,7 +15,7 @@ See [here](https://www.tensorflow.org/install/pip#hardware_requirements) for har
 
 Modify [requirements.txt](https://github.com/alankrantas/windows-cuda-gpu-devcontainer/blob/main/.devcontainer/requirements.txt) to include packages you'd like to install. `ipykernel` is required for executing IPython notebook cells in VS Code.
 
-Open the folder in VS Code, press `F1` to bring up the Command Palette, and select **Dev Containers: Open Folder in Container...**.
+Open the folder in VS Code, press `F1` to bring up the Command Palette, and select **Dev Containers: Open Folder in Container...**. After that, simply start Docker then open the directory in VS Code.
 
 After the DevContainer is up and running, test the GPU support with
 
