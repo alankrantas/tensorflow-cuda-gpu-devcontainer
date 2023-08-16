@@ -18,19 +18,21 @@ Modify [requirements.txt](https://github.com/alankrantas/windows-cuda-gpu-devcon
 
 Open the folder in VS Code, press `F1` to bring up the Command Palette, and select **Dev Containers: Open Folder in Container...**.
 
-When the DevContainer is up and running, test the GPU support with
+Wait until the DevContainer is up and running, then test if the Tensorflow can detect the GPU correctly:
 
 ```python
 python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
 ```
 
-Test run the example file:
+Test run using the example file:
 
 ```python
 python3 autokeras-test.py
 ```
 
-After that, simply start Docker then open the directory in VS Code.
+Or open `autokeras-test.ipynb` and run the cells.
+
+After that, simply start Docker then open the directory in VS Code to use the built container.
 
 ## Resources
 
