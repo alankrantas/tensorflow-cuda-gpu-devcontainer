@@ -1,12 +1,8 @@
 numpy
-scipy
 scikit-learn
 matplotlib
 pandas
 seaborn
 tensorflow
 autokeras
-flaml
-lightgbm
-opencv-python
 ipykernel
