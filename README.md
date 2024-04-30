@@ -48,6 +48,8 @@ python3 autokeras-test.py
 
 Or open `autokeras-test.ipynb` and run the cells.
 
+Without GPU, an epoch of the training may take over 1 minute. With GPU it would be a dozen seconds only.
+
 After that, simply start Docker then open the directory in VS Code to use the built container.
 
 ## Resources
