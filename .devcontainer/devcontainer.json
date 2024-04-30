@@ -1,9 +1,9 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-  "name": "CUDA",
+  "name": "python-cuda",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-  "image": "nvidia/cuda:11.8.0-devel-ubuntu22.04", // https://hub.docker.com/r/nvidia/cuda/tags
+  "image": "mcr.microsoft.com/devcontainers/python:3.11", // https://hub.docker.com/r/nvidia/cuda/tags
   "runArgs": [
     "--gpus=all"
   ],
@@ -13,11 +13,11 @@
     "XLA_FLAGS": "--xla_gpu_cuda_data_dir=/usr/local/cuda"
   },
   // Features to add to the dev container. More info: https://containers.dev/features.
-  // "features": {}
+  // "features": {},
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
   // Use 'postCreateCommand' to run commands after the container is created.
-  "updateContentCommand": "bash .devcontainer/install-dev-tools.sh",
+  "updateContentCommand": ".devcontainer/install-dev-tools.sh",
   "postCreateCommand": [
     "nvidia-smi"
   ],
