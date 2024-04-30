@@ -3,6 +3,6 @@ scikit-learn
 matplotlib
 pandas
 seaborn
-tensorflow[and-cuda]==2.15.0
+tensorflow==2.11
 autokeras
 ipykernel
