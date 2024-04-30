@@ -40,15 +40,9 @@ If success, you should see something like
 
 ## Test
 
-Test run using the example file:
+Test run using the example file - open `autokeras-test.py` and seletct `Run` -> `Run Without Debugging`, or open `autokeras-test.ipynb` and select `Run All`.
 
-```python
-python3 autokeras-test.py
-```
-
-Or open `autokeras-test.ipynb` and run the cells.
-
-Without GPU, an epoch of the training may take over 1 minute. With GPU it would be a dozen seconds only.
+Without GPU, an epoch of the training may take over 1 minute. With GPU it should be a dozen seconds only.
 
 After that, simply start Docker then open the directory in VS Code to use the built container.
 
