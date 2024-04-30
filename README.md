@@ -4,7 +4,7 @@ Build and run a DevContainer using Python `3.11`, Tensorflow `2.15` with CUDA `1
 
 This is a better way to run Tensorflow/AutoKeras on Windows with GPU support without frustrating installation and compatibility issues. `.py` and `.ipynb` scripts are supported without the need to install Anaconda/Jupyter Notebook.
 
-The original version used an CUDA image to install Python 3 and cuDNN. The current version uses `tensorflow[and-cuda]` to install Tensorflow and Cuda/cuDNN in a Python 3 image.
+The original version used an CUDA image to install Python 3 and cuDNN. The current version uses `tensorflow[and-cuda]` to install Tensorflow (`2.16` does not work yet) and Cuda/cuDNN in a regular Python 3 image.
 
 ## Prerequisites
 
@@ -17,6 +17,8 @@ The original version used an CUDA image to install Python 3 and cuDNN. The curre
 See [here](https://www.tensorflow.org/install/pip#hardware_requirements) for more detailed hardware and system requirements of running Tensorflow.
 
 Be warned that some deep learning models require more GPU memory than others and may cause the Python kernel to crash. You may need to set a smaller batch for training.
+
+VS Code may messed up the new line setting for `.devcontainer/install-dev-tools.sh` and cause the installation fail. Try set it to `LF` if you encouter issues.
 
 ## Start DevContainer
 
@@ -35,6 +37,8 @@ If success, you should see something like
 ```
 [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
 ```
+
+## Test
 
 Test run using the example file:
 
