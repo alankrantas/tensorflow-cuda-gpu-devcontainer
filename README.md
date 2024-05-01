@@ -73,7 +73,7 @@ Wed May  1 03:24:54 2024
 +-----------------------------------------------------------------------------------------+
 ```
 
-> Although `nvidia-smi` tells us the current NVIDIA driver uses CUDA `12.4`, it doesn't mean Tensorflow supports it. This is why using `tensorflow[and-cuda]` is easier to use existing NVIDIA CUDA/cuDNN images.
+> Although `nvidia-smi` informed us the current NVIDIA driver uses CUDA `12.4`, it doesn't mean Tensorflow supports it. This is why using `tensorflow[and-cuda]` is easier to use existing NVIDIA CUDA/cuDNN images.
 
 Then open a new terminal (`Terminal` -> `New Terminal`) to test if the Tensorflow detects the GPU correctly:
 
