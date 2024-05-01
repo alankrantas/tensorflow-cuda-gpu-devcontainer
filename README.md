@@ -97,6 +97,37 @@ Test run using the example file - open `autokeras-test.py` and seletct `Run` -> 
 python3 autokeras-test.py
 ```
 
+Which generates a result like below:
+
+```
+Trial 1 Complete [00h 03m 51s]
+val_loss: 0.03894084319472313
+
+Best val_loss So Far: 0.03894084319472313
+Total elapsed time: 00h 03m 51s
+
+...
+
+Prediction loss: 0.0315
+Prediction accuracy: 0.9910
+              precision    recall  f1-score   support
+
+           0       0.99      1.00      0.99       980
+           1       1.00      1.00      1.00      1135
+           2       0.99      0.99      0.99      1032
+           3       0.99      1.00      0.99      1010
+           4       0.99      0.99      0.99       982
+           5       0.99      0.99      0.99       892
+           6       1.00      0.98      0.99       958
+           7       0.99      0.99      0.99      1028
+           8       0.99      0.99      0.99       974
+           9       0.99      0.99      0.99      1009
+
+    accuracy                           0.99     10000
+   macro avg       0.99      0.99      0.99     10000
+weighted avg       0.99      0.99      0.99     10000
+```
+
 Or open `autokeras-test.ipynb`, run the cells or select `Run All` on top of the notebook.
 
 ## Resources
