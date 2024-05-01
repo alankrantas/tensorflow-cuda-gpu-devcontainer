@@ -16,6 +16,8 @@ The current version has been tested on:
 
 * A Windows 11 gaming laptop with a built-in RTX 3070 Ti
 
+> I've tried with my another laptop connecting to a eGPU (GTX 1660 Ti) without success so far.
+
 ## Prerequisites
 
 * An amd64 (x64) machine with a CUDA-compatible NVIDIA GPU card
@@ -27,6 +29,8 @@ The current version has been tested on:
 See [here](https://www.tensorflow.org/install/pip#hardware_requirements) for more detailed hardware and system requirements of running Tensorflow.
 
 > Note: some deep learning models require more GPU memory than others and may cause the Python kernel to crash. You may need to try setting a smaller training batch size.
+>
+> Some older cards may only support older drivers thus older CUDA versions. See the CUDA [Support Matrix](https://docs.nvidia.com/deeplearning/cudnn/latest/reference/support-matrix.html) for details, although I cannot test if `tensorflow[and-cuda]` will install older libraries automatically.
 
 ## Download Repo
 
