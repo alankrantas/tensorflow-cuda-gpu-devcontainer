@@ -1,32 +1,81 @@
-# NVIDIA CUDA + cuDNN DevContainer Template with GPU Support For Tensorflow
+# Tensorflow CUDA DevContainer Configuration for Supporting NVIDIA GPU
 
-Build and run a DevContainer using Python `3.11`, Tensorflow `2.15` with CUDA `12.2` + cuDNN. Tested on a gaming laptop with RTX 3070 Ti running Windows 11.
+To create a Docker Linux DevContainer that supports Tensorflow GPU without frustrating and complicated local installation, especially on Windows platforms.
 
-This is a better way to run Tensorflow/AutoKeras on Windows with GPU support without frustrating installation and compatibility issues. `.py` and `.ipynb` scripts are supported without the need to install Anaconda/Jupyter Notebook.
+The current version willl create the following setup:
 
-The original version used an CUDA image to install Python 3 and cuDNN. The current version uses `tensorflow[and-cuda]` to install Tensorflow (`2.16` does not work yet) and Cuda/cuDNN in a regular Python 3 image.
+* Python `3.11`
+* Tensorflow `2.15.0`
+* CUDA `12.2` + cuDNN
+
+> The current version utilizes `tensorflow[and-cuda]` to install compatible CUDA/cuDNN on a regular Python container. My original and previous version used a NVIDIA CUDA image to install Python and cuDNN.
+> 
+> For now Tensorflow `2.16.1` cannot be installed currectly. And, I still have no success to have installed TensorRT detected. Let me know if you managed to get it running!
+
+The current version has been tested on:
+
+* A Windows 11 gaming laptop with a built-in RTX 3070 Ti
 
 ## Prerequisites
 
-* An amd64 (x64) machine with a CUDA-compatible NVIDIA graphic card
+* An amd64 (x64) machine with a CUDA-compatible NVIDIA GPU card
 * [Docker engine](https://docs.docker.com/engine/install/) or [Docker Desktop](https://docs.docker.com/desktop/install/windows-install/) (and setup [.wslconfig](https://learn.microsoft.com/en-us/windows/wsl/wsl-config) to use more cores and memory than default if you are on Windows.)
-* [NVIDIA graphic card driver](https://www.nvidia.com/download/index.aspx)
+* Latest version of the [NVIDIA graphic card driver](https://www.nvidia.com/download/index.aspx)
 * [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) (which is already included in Windows’ Docker Desktop)
 * [Visual Studio Code](https://code.visualstudio.com/download) with [DevContainer extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) installed
 
 See [here](https://www.tensorflow.org/install/pip#hardware_requirements) for more detailed hardware and system requirements of running Tensorflow.
 
-Be warned that some deep learning models require more GPU memory than others and may cause the Python kernel to crash. You may need to set a smaller batch for training.
+> Note: some deep learning models require more GPU memory than others and may cause the Python kernel to crash. You may need to try setting a smaller training batch size.
 
-VS Code may messed up the new line setting for `.devcontainer/install-dev-tools.sh` and cause the installation fail. Try set it to `LF` if you encouter issues.
+## Download Repo
 
-## Start DevContainer
+Download the repo as a .zip file, unzip then open the folder in VS Code, or to use [Git](https://git-scm.com/):
+
+```bash
+git clone https://github.com/alankrantas/tensorflow-cuda-gpu-devcontainer.git
+cd tensorflow-cuda-gpu-devcontainer
+code .
+```
 
 Modify [requirements.txt](https://github.com/alankrantas/windows-cuda-gpu-devcontainer/blob/main/.devcontainer/requirements.txt) to include packages you'd like to install. `ipykernel` is required for executing IPython notebook cells in VS Code.
 
-Open the folder in VS Code, press `F1` to bring up the Command Palette, and select **Dev Containers: Open Folder in Container...**
+> Note: VS Code/Git may messed up the new line characters of `.devcontainer/install-dev-tools.sh` and `.devcontainer/requirements` which will cause the DevContainer failed to run the scripts.
+>
+> Click `CRLF` on the button right and change them to `LF`.
 
-Wait until the DevContainer is up and running, then test if the Tensorflow can detect the GPU correctly:
+## Start DevContainer
+
+In VS Code, press `F1` to bring up the Command Palette, and select **Dev Containers: Open Folder in Container...**
+
+Wait until the DevContainer is up and running (`nvidia-smi` is executed):
+
+```
+Wed May  1 03:24:54 2024       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.76.01              Driver Version: 552.22         CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3070 ...    On  |   00000000:01:00.0 Off |                  N/A |
+| N/A   46C    P0             29W /  130W |       0MiB /   8192MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+```
+
+> Although `nvidia-smi` tells us the current NVIDIA driver uses CUDA `12.4`, it doesn't mean Tensorflow supports it. This is why using `tensorflow[and-cuda]` is easier to use existing NVIDIA CUDA/cuDNN images.
+
+Then open a new terminal (`Terminal` -> `New Terminal`) to test if the Tensorflow detects the GPU correctly:
 
 ```python
 python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
@@ -38,22 +87,22 @@ If success, you should see something like
 [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
 ```
 
-## Test
+Afterwards, simply open the folder in VS Code to restart the built container.
 
-Test run using the example file - open `autokeras-test.py` and seletct `Run` -> `Run Without Debugging` or
+## Test Script
+
+Test run using the example file - open `autokeras-test.py` and seletct `Run` -> `Run Without Debugging`, or run in the terminal
 
 ```python
 python3 autokeras-test.py
 ```
 
-Or open `autokeras-test.ipynb`, run the cells or select `Run All`.
-
-After that, simply start Docker then open the directory in VS Code to use the built container.
+Or open `autokeras-test.ipynb`, run the cells or select `Run All` on top of the notebook.
 
 ## Resources
 
 * [Developing inside a Container](https://code.visualstudio.com/docs/devcontainers/containers)
-* [NVIDIA cuDNN Installation Guide](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html)
+* [Install TensorFlow with pip](https://www.tensorflow.org/install/pip)
 * [Setup a NVIDIA DevContainer with GPU Support for Tensorflow/Keras on Windows](https://alankrantas.medium.com/setup-a-nvidia-devcontainer-with-gpu-support-for-tensorflow-keras-on-windows-d00e6e204630)
 
 See [here](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#package-manager-ubuntu-install) for the latest version of `libcudnn8` and `libcudnn8-dev` in [install-dev-tools.sh](https://github.com/alankrantas/windows-cuda-gpu-devcontainer/blob/main/.devcontainer/install-dev-tools.sh).
