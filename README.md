@@ -135,5 +135,3 @@ Or open `autokeras-test.ipynb`, run the cells or select `Run All` on top of the 
 * [Developing inside a Container](https://code.visualstudio.com/docs/devcontainers/containers)
 * [Install TensorFlow with pip](https://www.tensorflow.org/install/pip)
 * [Setup a NVIDIA DevContainer with GPU Support for Tensorflow/Keras on Windows](https://alankrantas.medium.com/setup-a-nvidia-devcontainer-with-gpu-support-for-tensorflow-keras-on-windows-d00e6e204630)
-
-See [here](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#package-manager-ubuntu-install) for the latest version of `libcudnn8` and `libcudnn8-dev` in [install-dev-tools.sh](https://github.com/alankrantas/windows-cuda-gpu-devcontainer/blob/main/.devcontainer/install-dev-tools.sh).
